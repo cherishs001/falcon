@@ -16,6 +16,7 @@ class MainHosts extends PureComponent<PageProps> {
                 position: 'relative',
                 width: 260,
                 height: '100%',
+                display: 'flex',
             }}>
                 <HostMenu/>
             </div>

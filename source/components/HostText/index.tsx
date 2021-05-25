@@ -60,7 +60,7 @@ class HostText extends PureComponent<HostTextProps> {
                         return <div key={index} className={styles.line}>{item}</div>
                     })}
                 </div>
-                <div id={this.state.id} contentEditable={true} onClick={(e) => {
+                <div id={this.state.id} contentEditable={true} spellCheck={false} onClick={(e) => {
                     e.stopPropagation();
                 }} onInput={(e) => {
                     this.props.onChange(e.currentTarget.innerText);

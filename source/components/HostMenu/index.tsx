@@ -12,7 +12,7 @@ import {ComPageProps} from '@/typings';
 class HostMenu extends PureComponent<ComPageProps> {
     render(): React.ReactNode {
         return <div className={styles.container}>
-            sb
+            <div></div>
         </div>
     }
 }
