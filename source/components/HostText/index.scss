@@ -1,0 +1,40 @@
+.container {
+  flex: 1;
+  cursor: text;
+  overflow-y: auto;
+}
+
+.lineBg {
+  width: 45px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #efefef;
+}
+
+.lineBox {
+  position: absolute;
+  text-align: right;
+  width: 45px;
+}
+
+.line {
+  font-size: 12px;
+  line-height: 21px;
+  margin-right: 15px;
+}
+
+.textarea {
+  margin-left: 50px;
+  flex: 1;
+  font-size: 14px;
+  cursor: text;
+  line-height: 1.5;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+.textarea:focus {
+  outline: 0;
+}

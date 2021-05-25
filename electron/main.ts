@@ -4,8 +4,8 @@ let win: BrowserWindow | null = null;
 
 app.on('ready', async () => {
     win = new BrowserWindow({
-        width: 1280,
-        height: 800,
+        width: 950,
+        height: 600,
         show: false,
         // frame: false,
         webPreferences: {
