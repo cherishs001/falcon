@@ -39,5 +39,8 @@ module.exports = {
     output: {
         path: path.resolve(rootPath, 'dist'),
         filename: '[name].js'
+    },
+    externals: {
+        'sqlite3':'commonjs sqlite3'
     }
 }

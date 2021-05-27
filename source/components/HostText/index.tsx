@@ -9,11 +9,14 @@ import {ComPageProps} from '@/typings';
  */
 
 interface HostTextState {
-    line: Array<number>,
-    id: string,
+    line: Array<number>
+    id: string
 }
 
 interface HostTextProps extends ComPageProps {
+    edit: boolean
+    defaultValue: string
+
     onChange(value: string): void
 }
 
@@ -24,6 +27,10 @@ class HostText extends PureComponent<HostTextProps> {
     };
 
     componentDidMount(): void {
+        const text = document.getElementById(this.state.id);
+        if (text) {
+            text.innerHTML = this.props.defaultValue;
+        }
         // @ts-ignore
         const ro = new ResizeObserver(entries => {
             const height = entries[0].contentRect.height;
@@ -38,7 +45,16 @@ class HostText extends PureComponent<HostTextProps> {
                 })
             }
         })
-        ro.observe(document.getElementById(this.state.id));
+        ro.observe(text);
+    }
+
+    componentDidUpdate(prevProps: Readonly<HostTextProps>, prevState: Readonly<{}>, snapshot?: any): void {
+        if (this.props.defaultValue !== prevProps.defaultValue && !this.props.edit) {
+            const text = document.getElementById(this.state.id);
+            if (text) {
+                text.innerHTML = this.props.defaultValue;
+            }
+        }
     }
 
     render(): React.ReactNode {
@@ -60,11 +76,11 @@ class HostText extends PureComponent<HostTextProps> {
                         return <div key={index} className={styles.line}>{item}</div>
                     })}
                 </div>
-                <div id={this.state.id} contentEditable={true} spellCheck={false} onClick={(e) => {
+                {this.props.edit ? <div id={this.state.id} contentEditable={this.props.edit} spellCheck={false} onClick={(e) => {
                     e.stopPropagation();
                 }} onInput={(e) => {
                     this.props.onChange(e.currentTarget.innerText);
-                }} className={styles.textarea}/>
+                }} className={styles.textarea}/> : <div id={this.state.id} className={styles.textarea}/>}
             </div>
         </div>
     }

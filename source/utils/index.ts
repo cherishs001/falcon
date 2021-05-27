@@ -222,6 +222,16 @@ const getUrlRelativePath = (): string => {
     return relUrl;
 }
 
+const debounce = (fn: Function, wait: number) => {
+    let timer: number | NodeJS.Timeout | null = null;
+    return () => {
+        if (timer !== null) {
+            clearTimeout(<NodeJS.Timeout>timer);
+        }
+        timer = setTimeout(fn, wait);
+    }
+}
+
 export {
     scaleToRem,
     judgeMediaTypes,
@@ -232,4 +242,5 @@ export {
     similar,
     quickSort,
     getUrlRelativePath,
+    debounce,
 }
