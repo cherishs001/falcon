@@ -28,8 +28,8 @@ class HostText extends PureComponent<HostTextProps> {
 
     componentDidMount(): void {
         const text = document.getElementById(this.state.id);
-        if (text) {
-            text.innerHTML = this.props.defaultValue;
+        if (text && this.props.edit) {
+            text.innerText = this.props.defaultValue;
         }
         // @ts-ignore
         const ro = new ResizeObserver(entries => {
@@ -49,7 +49,7 @@ class HostText extends PureComponent<HostTextProps> {
     }
 
     componentDidUpdate(prevProps: Readonly<HostTextProps>, prevState: Readonly<{}>, snapshot?: any): void {
-        if (this.props.defaultValue !== prevProps.defaultValue && !this.props.edit) {
+        if (!this.props.edit) {
             const text = document.getElementById(this.state.id);
             if (text) {
                 text.innerHTML = this.props.defaultValue;
